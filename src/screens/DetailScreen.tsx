@@ -7,6 +7,7 @@ import { useCollection } from '../contexts/CollectionContext';
 import { Button, CharacterImage, Stars, StateView } from '../components/ui';
 import type { Character, RootStackParams } from '../types';
 import { colors, styles } from '../theme';
+import { localizeCharacter } from '../locales/pt-BR';
 export function DetailScreen({ route, navigation }: NativeStackScreenProps<RootStackParams, 'Details'>) {
   const [character, setCharacter] = useState<Character | null>(null);
   const [loading, setLoading] = useState(true), [error, setError] = useState(''), [saveError, setSaveError] = useState('');
@@ -14,7 +15,7 @@ export function DetailScreen({ route, navigation }: NativeStackScreenProps<RootS
   const { entries, update } = useCollection();
   useEffect(() => {
     const controller = new AbortController(); setLoading(true); setError('');
-    getCharacter(route.params.id, controller.signal).then(data => { if (!controller.signal.aborted) { setCharacter(data); navigation.setOptions({ title: data.name }); } })
+    getCharacter(route.params.id, controller.signal).then(data => { if (!controller.signal.aborted) { const translated = localizeCharacter(data); setCharacter(translated); navigation.setOptions({ title: translated.name }); } })
       .catch(e => { if (!axios.isCancel(e) && !controller.signal.aborted) setError(errorMessage(e)); }).finally(() => { if (!controller.signal.aborted) setLoading(false); });
     return () => controller.abort();
   }, [route.params.id, navigation, attempt]);

@@ -45,7 +45,7 @@ API pública gratuita, sem chave: https://dragonball-api.com/api
 - `GET /characters?name=Goku&race=Saiyan`: busca/filtro no servidor.
 - `GET /characters/1`: detalhe completo, planeta e transformações.
 
-As respostas filtradas podem ser arrays; o serviço normaliza esse formato e o formato `{items, meta}`. A busca usa o comportamento do endpoint (não promete busca parcial). A interface está em português; descrições e alguns atributos são exibidos no idioma original da API, normalmente espanhol/inglês. Timeout de 15 segundos e cancelamento no cleanup dos hooks.
+As respostas filtradas podem ser arrays; o serviço normaliza esse formato e o formato `{items, meta}`. A busca usa o comportamento do endpoint (não promete busca parcial). A interface e a apresentação dos dados estão em **PT-BR**: `src/locales/pt-BR.ts` adapta descrições dos 58 personagens e 20 planetas consultados, atributos, nomes localizados, transformações e unidades de Ki. A busca aceita nomes como Mestre Kame, Freeza, Kuririn e Androide 18 e os converte para os termos exigidos pelo endpoint. IDs, imagens e parâmetros de raça permanecem no formato da API. Novos itens sem descrição traduzida mostram aviso em português. Timeout de 15 segundos e cancelamento no cleanup dos hooks.
 
 ## Fluxos e persistência
 
@@ -95,7 +95,7 @@ tests/         # testes de contrato, conflitos e fluxo web
 ## Verificar
 
 ```bash
-npm run check                 # TypeScript + 13 testes unitários
+npm run check                 # TypeScript + 19 testes unitários
 npm run lint                  # ESLint
 npx expo install --check      # compatibilidade do SDK
 npm run export:web            # bundle web

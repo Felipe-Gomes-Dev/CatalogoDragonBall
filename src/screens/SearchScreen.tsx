@@ -15,7 +15,7 @@ export function SearchScreen() {
       <TextInput style={styles.input} accessibilityLabel="Nome do personagem" placeholder="Ex.: Goku, Vegeta, Bulma" placeholderTextColor={colors.muted} value={text} onChangeText={setText} returnKeyType="search" onSubmitEditing={submit} />
       <Text style={styles.label}>Filtrar por raça</Text>
       <View style={styles.row}>{races.map(option => <Button compact key={option.value} title={option.label} secondary={race !== option.value} selected={race === option.value} onPress={() => setRace(option.value)} />)}</View><Button title="Buscar" busy={search.loading && !!submitted} onPress={submit} />
-      {!!submitted && !search.loading && !search.error && <Text style={styles.subtitle} accessibilityLiveRegion="polite">{search.items.length} personagem(ns) carregado(s)</Text>}
+      {!!submitted && !search.loading && !search.error && <Text style={styles.subtitle} accessibilityLiveRegion="polite">{search.items.length === 1 ? '1 personagem encontrado' : `${search.items.length} personagens encontrados`}</Text>}
       {!!search.error && search.items.length > 0 && <StateView title="Não foi possível atualizar" message={search.error} retry={search.retry} />}
     </View>}
     empty={<StateView title={!submitted ? 'Quem você quer conhecer?' : search.loading ? 'Buscando personagens…' : search.error ? 'Falha na busca' : 'Nenhum personagem encontrado'} message={!submitted ? 'Digite um nome ou escolha uma raça e toque em Buscar.' : search.error || (!search.loading ? 'Tente outro nome ou altere o filtro.' : undefined)} busy={!!submitted && search.loading} retry={search.error ? search.retry : undefined} />}

@@ -17,7 +17,11 @@ export function authMessage(error: unknown) {
   if (/already registered/i.test(message)) return 'Esse e-mail já está cadastrado.';
   if (/fetch|network/i.test(message)) return 'Não foi possível conectar. Verifique sua internet.';
   if (/rate limit/i.test(message)) return 'Muitas tentativas. Aguarde antes de tentar novamente.';
-  return message;
+  if (/invalid email|email address.*invalid/i.test(message)) return 'Digite um e-mail válido.';
+  if (/password.*(weak|least|characters)/i.test(message)) return 'Escolha uma senha mais forte, com pelo menos 6 caracteres.';
+  if (/signup.*disabled|signups.*not allowed/i.test(message)) return 'O cadastro está temporariamente indisponível. Tente novamente mais tarde.';
+  if (/^(Não|Digite|A senha|As senhas|Esse e-mail|E-mail|Conta criada|Confirme)/.test(message)) return message;
+  return 'Não foi possível concluir a autenticação. Tente novamente.';
 }
 export async function authenticate(email: string, password: string, register: boolean): Promise<AppUser> {
   email = email.trim().toLowerCase();

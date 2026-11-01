@@ -6,10 +6,12 @@ import { useCollection } from '../contexts/CollectionContext';
 import type { Character, RootStackParams } from '../types';
 import { colors, font, styles } from '../theme';
 import { CharacterImage } from './ui';
+import { localizeCharacter } from '../locales/pt-BR';
 export function CharacterCard({ character }: { character: Character }) {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParams>>();
   const { entries, update } = useCollection();
   const entry = entries[character.id];
+  const display = localizeCharacter(character);
   const [error, setError] = useState(''), [busy, setBusy] = useState(false);
   async function favorite() {
     setBusy(true); setError('');
@@ -18,11 +20,11 @@ export function CharacterCard({ character }: { character: Character }) {
     finally { setBusy(false); }
   }
   return <View style={card.container}>
-    <Pressable onPress={() => navigation.navigate('Details', { id: character.id })} accessibilityRole="button" accessibilityLabel={`${character.name}, ${character.race || 'raça desconhecida'}${entry?.consumed ? ', conhecido' : ''}. Abrir detalhes.`} style={({ pressed }) => [{ gap: 8, opacity: pressed ? 0.7 : 1 }]}>
-      <CharacterImage uri={character.image} name={character.name} />
-      <View style={{ padding: 14, paddingTop: 4, gap: 7 }}><Text style={card.race}>{character.race || 'Raça desconhecida'}</Text><Text style={card.name}>{character.name}</Text>
+    <Pressable onPress={() => navigation.navigate('Details', { id: character.id })} accessibilityRole="button" accessibilityLabel={`${display.name}, ${display.race}${entry?.consumed ? ', conhecido' : ''}. Abrir detalhes.`} style={({ pressed }) => [{ gap: 8, opacity: pressed ? 0.7 : 1 }]}>
+      <CharacterImage uri={character.image} name={display.name} />
+      <View style={{ padding: 14, paddingTop: 4, gap: 7 }}><Text style={card.race}>{display.race}</Text><Text style={card.name}>{display.name}</Text>
       {entry?.consumed && <Text style={card.badge}>Conhecido {entry.rating ? `• ${entry.rating}/5 ★` : ''}</Text>}
-      <Text style={{ fontFamily: font, fontSize: 12, color: colors.muted }}>{character.affiliation || 'Ver personagem'}  ↗</Text></View>
+      <Text style={{ fontFamily: font, fontSize: 12, color: colors.muted }}>{display.affiliation}  ↗</Text></View>
     </Pressable>
     <Pressable onPress={favorite} disabled={busy} accessibilityRole="button" accessibilityLabel={entry?.favorite ? '♥ Favorito' : '♡ Favoritar'} accessibilityState={{ selected: !!entry?.favorite, busy }} style={[card.favorite, entry?.favorite && { borderColor: colors.orange }]}>
       {busy ? <ActivityIndicator size="small" color={colors.orange} /> : <Text style={{ color: entry?.favorite ? colors.orange : colors.ink, fontSize: 23 }}>{entry?.favorite ? '♥' : '♡'}</Text>}

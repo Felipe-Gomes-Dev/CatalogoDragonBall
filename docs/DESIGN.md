@@ -11,3 +11,5 @@ Composição: marca com esfera de quatro estrelas, destaque do Goku com círculo
 Cards priorizam a arte, raça, nome e afiliação. Favoritar é uma ação sobreposta com área de 44×44 e estado anunciado. Detalhes usam destaque circular e atributos de poder agrupados. Filtros de raça usam controles compactos de pelo menos 44 pontos.
 
 Não há animação automática. Feedback de toque, estados selecionados, carregamento e erros continuam disponíveis em todas as telas.
+
+Textos da interface, descrições, raças, afiliações, gêneros, planetas, transformações e unidades de Ki são apresentados em português do Brasil. A camada `src/locales/pt-BR.ts` adapta o conteúdo público da API; IDs e valores de filtros usados nas requisições não são traduzidos. Nomes próprios permanecem, com adaptações usuais como Mestre Kame, Freeza e Kuririn.

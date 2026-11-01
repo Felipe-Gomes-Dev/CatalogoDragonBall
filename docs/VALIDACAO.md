@@ -3,7 +3,7 @@
 ## Verificado automaticamente
 
 - TypeScript em modo strict.
-- 13 testes unitários: resposta paginada/filtrada, busca no endpoint, erros 404/rede, limpeza de HTML, conflitos por timestamp/fuso, desmarcações e regras das notas.
+- 19 testes unitários: resposta paginada/filtrada, busca no endpoint, erros 404/rede, limpeza de HTML, conflitos por timestamp/fuso, desmarcações, notas e apresentação PT-BR. A cobertura da localização inclui os 58 personagens, 20 planetas e todas as transformações da resposta consultada.
 - Fluxo web em Chrome, viewport 390 × 844: cadastro local com hash PBKDF2, paginação com erro e nova tentativa, detalhe, favorito, conhecido, nota 4, reabertura, desfavoritar, listas, busca e resultado vazio, logout, senha incorreta e outra conta com coleção vazia.
 - Screenshots geradas pelo teste em `docs/screenshots/`, usando fixtures baixadas da API real. Não são evidência de execução nativa nem de nuvem.
 - Exportação web, bundle Android Hermes no SDK 57, lint e checagem de compatibilidade dos pacotes Expo.

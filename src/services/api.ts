@@ -1,5 +1,6 @@
 import axios from 'axios';
 import type { Character } from '../types';
+import { apiSearchName } from '../locales/pt-BR';
 export const api = axios.create({ baseURL: 'https://dragonball-api.com/api', timeout: 15000 });
 export interface Page { items: Character[]; hasMore: boolean }
 export function normalizePage(data: unknown, page: number): Page {
@@ -10,7 +11,7 @@ export function normalizePage(data: unknown, page: number): Page {
 }
 export async function getCharacters(page = 1, query = '', race = '', signal?: AbortSignal): Promise<Page> {
   try {
-    const { data } = await api.get('/characters', { params: { page, limit: 12, ...(query ? { name: query.trim() } : {}), ...(race ? { race } : {}) }, signal });
+    const { data } = await api.get('/characters', { params: { page, limit: 12, ...(query ? { name: apiSearchName(query) } : {}), ...(race ? { race } : {}) }, signal });
     return normalizePage(data, page);
   } catch (error) {
     if (axios.isAxiosError(error) && error.response?.status === 404) return { items: [], hasMore: false };
