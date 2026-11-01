@@ -1,0 +1,156 @@
+Desenvolvimento Mobile Híbrido
+ 
+Curso
+Bacharelado em Sistemas de Informação (BSI)
+Disciplina
+Desenvolvimento Mobile Híbrido
+Professor Responsável
+Mark Joselli
+Peso na Nota Final
+50% (Atividade Prática Somativa de React Native)
+Grupo
+Até 4 pessoas; um dos integrantes posta no AVA.
+Data de Entrega
+02/11/2026
+Este projeto somativo consiste em desenvolver, com React Native + Expo, um aplicativo de catálogo interativo que consome uma API pública gratuita. Ele exige a aplicação dos conceitos vistos nas aulas de React: componentes e JSX, props, hooks (useState, useEffect), layout com Flexbox, listas com FlatList, navegação com React Navigation (Stack Navigator), estado global com Context API (createContext/useContext), consumo de APIs com Axios, persistência e autenticação.
+
+O tema é livre. O exemplo de referência é a "CineLista" (séries com a TVMaze API), mas o grupo pode escolher outro tema, desde que implemente a mesma estrutura funcional (RF01–RF10) usando uma API pública gratuita com lista paginada + busca + detalhe. Sugestões: TVMaze, PokéAPI, Rick and Morty API, SWAPI, Jikan, Open Library, Studio Ghibli API, REST Countries.
+
+Regra importante: o grupo não pode reutilizar o mesmo tema/API do Somativo de Flutter. O objetivo é comparar as duas tecnologias, e não portar o mesmo app linha a linha.
+O aplicativo terá múltiplas telas que permitirão ao usuário:
+- Fazer login antes de acessar o catálogo.
+- Visualizar uma lista de itens carregada da internet, com rolagem infinita.
+- Buscar itens e filtrar resultados.
+- Ver os detalhes de um item selecionado.
+- Marcar itens como favoritos e como "consumidos" (assistidos/lidos/capturados), com uma nota pessoal (1 a 5 estrelas).
+- Ter essas informações preservadas mesmo depois de fechar o app.
+- Após o login, o app consome a API para buscar a lista inicial de itens.
+- Itens exibidos com FlatList em grade (numColumns), com imagem e nome/título, usando um componente próprio (ex.: ItemCard) que recebe dados via props.
+- Paginação por rolagem infinita (onEndReached + onEndReachedThreshold), anexando a próxima página à lista existente.
+- Pull-to-refresh (refreshing + onRefresh) recarrega a primeira página.
+- Itens sem imagem exibem um placeholder, sem quebrar o layout.
+- keyExtractor com chave única e estável.
+- Uso de React Navigation com Stack Navigator (@react-navigation/native-stack).
+- Tocar em um item navega para a Tela de Detalhes passando o id via route.params.
+- Título do header da Tela de Detalhes definido dinamicamente com o nome do item (navigation.setOptions).
+- Faz uma segunda requisição (Axios) para buscar os dados completos do item pelo id.
+- Exibe imagem em tamanho maior e os principais atributos (nome, categoria/tipo, descrição, etc.).
+- Textos com HTML vindo da API (ex.: sinopse da TVMaze) devem ser exibidos limpos, sem tags.
+- Na Tela de Detalhes, um botão (ex.: ícone de coração) favorita/desfavorita o item.
+- O estado dos favoritos é gerenciado globalmente com Context API (createContext + Provider + hook customizado, ex.: useFavorites()).
+- O ícone do card no catálogo também reflete o estado de favorito (mesmo estado, duas telas).
+- Acessível pela Tela Principal, lista os favoritos a partir do Context, atualizando automaticamente ao desfavoritar.
+- Exibe um estado vazio amigável quando não houver favoritos (ListEmptyComponent).
+- Favoritos e itens "consumidos" (RF07) persistem entre reinícios do app.
+- Baseline obrigatório — Persistência Local: @react-native-async-storage/async-storage ou expo-sqlite.
+- O carregamento inicial dos dados persistidos deve ocorrer em um useEffect, e o app não deve exibir dados "zerados" enquanto carrega.
+- Bônus (+10%) — Persistência em Nuvem: Firebase (Firestore) OU Supabase OU API própria.
+- O app exige login antes de exibir o catálogo, usando navegação condicional (renderizar o Stack de autenticação ou o Stack do app conforme o estado de sessão em um AuthContext).
+- A sessão persiste: ao reabrir o app logado, o usuário vai direto ao catálogo. Deve existir botão de logout.
+- Na Tela de Detalhes, opção para marcar o item como "consumido" e atribuir uma nota de 1 a 5.
+- Tela própria (ou aba) lista os itens consumidos com suas notas.
+- Baseline obrigatório — Login Local: cadastro/login simples salvo localmente (não guardar senha em texto puro: usar expo-secure-store ou, no mínimo, hash).
+- Bônus (+10%, requer o bônus de nuvem do RF06) — Autenticação Real: Firebase Auth ou Supabase Auth, com os dados vinculados ao usuário e sincronizados na nuvem.
+- TextInput controlado (value + onChangeText) e botão "Buscar" acionam o endpoint de busca da API.
+- Diferente do Flutter: os resultados são exibidos em uma lista de resultados (não navega direto ao primeiro item); tocar em um resultado abre a Tela de Detalhes.
+- Mensagem clara quando a busca não retorna resultados.
+- Enquanto requisições estiverem em andamento (carga inicial, próxima página, busca, detalhes, login), exibir ActivityIndicator (na próxima página, como ListFooterComponent).
+- Em caso de falha de rede/API, exibir mensagem de erro amigável com botão "Tentar novamente".
+- Os estados loading / error / data devem ser tratados explicitamente (ex.: hook customizado useFetch ou estados separados com useState).
+- Imagens e elementos tocáveis com accessible, accessibilityLabel e accessibilityRole adequados (testar com TalkBack/VoiceOver).
+- Botões de estado (favoritar/consumido) informam o estado atual (accessibilityState={{ selected }} ou label que muda).
+- Contraste de cores adequado entre texto e fundo.
+- O layout não quebra com fonte do sistema aumentada (não desabilitar allowFontScaling; evitar alturas fixas que cortem texto).
+- Áreas de toque com tamanho mínimo de ~44×44 pt (usar hitSlop em ícones pequenos).
+- API: qualquer API pública gratuita com listagem paginada, detalhe e busca (diferente da usada no Somativo de Flutter).
+- Framework: React Native com Expo (JavaScript ou TypeScript — TypeScript não é obrigatório, mas conta para Qualidade do Código).
+- Pacotes obrigatórios: axios, @react-navigation/native + @react-navigation/native-stack, e um pacote de persistência local (@react-native-async-storage/async-storage ou expo-sqlite).
+- Pacotes opcionais: @react-navigation/bottom-tabs, expo-secure-store, @expo/vector-icons; bônus: firebase ou @supabase/supabase-js.
+- Chaves de API/Firebase/Supabase devem ficar em variáveis de ambiente (.env com EXPO_PUBLIC_...) e não podem ser commitadas.
+Entrega pelo campo de submissão oficial da atividade no sistema da universidade, em um único arquivo PDF, seguindo o modelo abaixo.
+Capa:
+- Disciplina, turma, data de entrega.
+- Nome do projeto e tema escolhido.
+- Nome completo de TODOS os integrantes do grupo (ver penalidade no item 8).
+ 
+Seção 1 — Links:
+- Link do repositório GitHub (público), com README.md explicando como rodar (npx expo start).
+- Link do vídeo (YouTube, público).
+ 
+Seção 2 — Tema e Configuração:
+- Tema escolhido e API utilizada.
+- Opção de persistência: Local ou Nuvem (qual serviço, se nuvem).
+- Opção de login: Local ou Autenticação real (qual serviço, se nuvem).
+ 
+Seção 3 — Autoavaliação dos Requisitos Funcionais (RF01–RF10):
+- Tabela: RF | Implementado (Sim/Não/Parcial) | Caminho do arquivo principal.
+ 
+Seção 4 — Flutter × React Native (nova):
+- Meia página comparando a experiência do grupo nos dois somativos: estado global (Provider × Context), listas (GridView × FlatList), assincronismo (FutureBuilder × useEffect/useState), produtividade e ferramentas (hot reload × Fast Refresh/Expo Go).
+ 
+Seção 5 — Tema da Explicação Técnica (ver item 7):
+- Qual tema foi escolhido e em que minuto do vídeo ele é abordado.
+ 
+Seção 6 — Screenshots das telas principais (login, catálogo, detalhes, busca, favoritos, itens consumidos).
+Requisitos Funcionais obrigatórios (90%):
+Critério
+Peso
+RF01 — Catálogo, FlatList e Paginação
+15%
+RF02/RF03 — Navegação e Detalhes
+10%
+RF04/RF05 — Favoritos com Context API
+15%
+RF06 — Persistência de Dados (local)
+10%
+RF07 — Login, Sessão e Itens Consumidos (local)
+10%
+RF08 — Busca
+10%
+RF09 — Feedback de UI
+10%
+RF10 — Acessibilidade
+10%
+ 
+Qualidade do Código e Organização (5%): componentes reutilizáveis, hooks customizados, separação em pastas (services/, contexts/, hooks/, components/, screens/), ausência de segredos no repositório.
+
+Qualidade da Interface (UI/UX) (5%): layout limpo, intuitivo e funcional.
+
+Bônus (somados à nota, limitada a 100% no total):
+ 
+Bônus
+Peso
+RF06 — Persistência em Nuvem
++10%
+RF07 — Autenticação Real (requer bônus do RF06)
++10%
+7.1. Justificativa: não haverá defesa técnica individual. Cada grupo grava um vídeo que comprova que os conceitos foram compreendidos e aplicados por todos os integrantes.
+
+7.2. Formato:
+- YouTube, Público.
+- Duração: 6 a 9 minutos.
+- Todos os integrantes aparecem e falam, cada um explicando ao menos uma parte que implementou.
+- No início, todos se apresentam com o nome completo (igual ao da capa do PDF).
+ 
+7.3. Roteiro obrigatório e cronometrado:
+- 0:00–0:30 — Apresentação: cada integrante diz seu nome completo.
+- 0:30–2:00 — Demonstração: app rodando (login, catálogo com rolagem infinita, busca, detalhes, favoritos, consumidos, reabrir o app mostrando a persistência).
+- 2:00–5:30 — Explicação de código: cada integrante explica seu trecho, relacionando-o ao RF (~50s por pessoa, em grupo de 4).
+- 5:30–8:00 — Explicação Técnica: o grupo escolhe um tema da lista abaixo (ou outro combinado com o professor) e explica em profundidade, relacionando com o próprio código.
+ 
+Sugestões de temas para a Explicação Técnica:
+- Context API vs. estado local (useState) — por que favoritos/sessão são globais? Quando o Context causa re-renderizações desnecessárias?
+- Ciclo de vida com useEffect — array de dependências, função de cleanup e como evitaram requisições duplicadas ou atualização de estado após desmontar a tela.
+- FlatList vs. ScrollView + map — virtualização, keyExtractor, onEndReached e desempenho com listas grandes.
+- Navegação condicional — como o AuthContext decide entre o Stack de login e o Stack do app, e por que não usar navigation.navigate('Login') no logout.
+- Persistência (AsyncStorage vs. SQLite vs. SecureStore) — o que guardar em cada um e por quê.
+- Local vs. Nuvem (para quem fez o bônus) — latência, offline, complexidade.
+- Flutter vs. React Native — comparação concreta entre os dois somativos do grupo.
+- Tratamento de falhas de rede — o que acontece se a API cair durante a rolagem infinita?
+- Entrega por comentário: se a entrega for feita por comentário na atividade, e não pelo campo oficial, desconto de -30% da nota final.
+- Item de entregável faltante: cada item ausente do PDF (links, seções, tabela, screenshots) resulta em -20% por item.
+- Atraso: entregas após 02/11/2026 sofrem -20% por semana de atraso (ou fração).
+- Nome de integrante faltando: integrante cujo nome completo não conste na capa do PDF recebe nota ZERO, mesmo aparecendo no vídeo. Os demais não são afetados.
+- Reuso do tema do Flutter: projeto com o mesmo tema/API do Somativo de Flutter sofre desconto de -20%.
+- Duração do vídeo fora do intervalo: vídeos com menos de 6 ou mais de 9 minutos sofrem -5% por minuto fora do intervalo (ex.: 4 min → -10%; 11 min → -10%).
+ 

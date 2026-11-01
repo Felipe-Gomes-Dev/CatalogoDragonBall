@@ -1,0 +1,11 @@
+# Flutter × React Native
+
+No somativo Flutter, a Pokédex foi organizada em serviços, providers, telas e widgets. No Catálogo Z, preservamos essa separação de responsabilidades e mudamos o tema para Dragon Ball, usando TypeScript, componentes e hooks. A experiência pode ser comparada diretamente pelos fluxos de autenticação, catálogo e coleção pessoal.
+
+O `CollectionProvider` do Flutter estende `ChangeNotifier` e comunica mudanças com `notifyListeners`. Em React Native, o `CollectionContext` oferece o estado e as operações por meio de um Provider e do hook `useCollection`. Os dois resolvem a necessidade de manter favoritos consistentes entre telas. Já campos como o texto da busca permanecem locais, usando `useState`. No React, atualizar o valor do Context provoca novas renderizações nos consumidores, por isso não colocamos o texto digitado no estado global da coleção.
+
+A grade do Flutter foi construída com `GridView`; neste projeto usamos `FlatList` com `numColumns`, `keyExtractor`, `onEndReached` e `onRefresh`. O carregamento adicional, antes acionado por botão, agora acompanha a rolagem. A lista preserva os itens anteriores se a próxima página falha, e oferece nova tentativa no rodapé. A grade adapta o número de colunas à largura e à escala de fonte.
+
+No Flutter, a tela de detalhes usa `FutureBuilder`, enquanto o catálogo acumula resultados em um provider. Em React Native, `useEffect` inicia a consulta e `useState` representa carregamento, erro e dados. O cleanup cancela a requisição com `AbortController`, evitando que uma resposta antiga substitua a busca atual ou atualize uma tela desmontada. A navegação recebe apenas o ID e o detalhe busca os dados completos novamente, conforme o novo enunciado.
+
+O Flutter conta com hot reload e ferramentas específicas do Dart; o Expo reúne servidor de desenvolvimento, QR code e Fast Refresh no fluxo JavaScript/TypeScript. A tipagem dos parâmetros de navegação e dos modelos ajuda a localizar erros antes da execução. Em ambos, testes de lógica não substituem conferir a interface em dispositivo e com leitor de tela. A avaliação de produtividade do grupo deve ser complementada pelos integrantes com sua experiência real, sem apresentar esta comparação técnica como um depoimento já gravado.
