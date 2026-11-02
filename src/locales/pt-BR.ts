@@ -2,25 +2,50 @@ import type { Character } from '../types';
 
 // Conteúdo de apresentação em PT-BR. IDs, URLs e parâmetros de consulta não mudam.
 const races: Record<string, string> = {
-  Saiyan: 'Saiyajin', Namekian: 'Namekuseijin', Human: 'Humano', Android: 'Androide',
-  'Frieza Race': 'Raça de Freeza', Majin: 'Majin', God: 'Divindade', Angel: 'Anjo',
-  'Jiren Race': 'Raça de Jiren', Evil: 'Demônio', Unknown: 'Desconhecida',
-  Nucleico: 'Núcleo', 'Nucleico benigno': 'Núcleo benigno',
+  Saiyan: 'Saiyajin',
+  Namekian: 'Namekuseijin',
+  Human: 'Humano',
+  Android: 'Androide',
+  'Frieza Race': 'Raça de Freeza',
+  Majin: 'Majin',
+  God: 'Divindade',
+  Angel: 'Anjo',
+  'Jiren Race': 'Raça de Jiren',
+  Evil: 'Demônio',
+  Unknown: 'Desconhecida',
+  Nucleico: 'Núcleo',
+  'Nucleico benigno': 'Núcleo benigno',
 };
 const affiliations: Record<string, string> = {
-  'Z Fighter': 'Guerreiros Z', 'Army of Frieza': 'Exército de Freeza', Freelancer: 'Independente',
-  'Red Ribbon Army': 'Exército Red Ribbon', 'Namekian Warrior': 'Guerreiros de Namekusei',
-  'Pride Troopers': 'Tropa do Orgulho', 'Assistant of Beerus': 'Assistente de Bills',
-  'Assistant of Vermoud': 'Assistente de Vermoud', 'Assistant of Vermouth': 'Assistente de Vermoud',
-  Villain: 'Vilões', Other: 'Outros',
+  'Z Fighter': 'Guerreiros Z',
+  'Army of Frieza': 'Exército de Freeza',
+  Freelancer: 'Independente',
+  'Red Ribbon Army': 'Exército Red Ribbon',
+  'Namekian Warrior': 'Guerreiros de Namekusei',
+  'Pride Troopers': 'Tropa do Orgulho',
+  'Assistant of Beerus': 'Assistente de Bills',
+  'Assistant of Vermoud': 'Assistente de Vermoud',
+  'Assistant of Vermouth': 'Assistente de Vermoud',
+  Villain: 'Vilões',
+  Other: 'Outros',
 };
 const names: Record<string, string> = {
-  Freezer: 'Freeza', Celula: 'Cell', Krillin: 'Kuririn', 'Master Roshi': 'Mestre Kame',
-  Launch: 'Lunch', 'Mr. Satan': 'Sr. Satan', 'Grand Priest': 'Grande Sacerdote',
-  'Kaio del norte (Kaito)': 'Senhor Kaiô do Norte', 'Kaio del Sur': 'Kaiô do Sul',
-  'Kaio del este': 'Kaiô do Leste', 'Kaio del Oeste': 'Kaiô do Oeste', 'Gran Kaio': 'Grande Kaiô',
-  'Kaio-shin del Este': 'Kaioshin do Leste', 'Kaio-shin del Norte': 'Kaioshin do Norte',
-  'Kaio-shin del Sur': 'Kaioshin do Sul', 'Kaio-shin del Oeste': 'Kaioshin do Oeste',
+  Freezer: 'Freeza',
+  Celula: 'Cell',
+  Krillin: 'Kuririn',
+  'Master Roshi': 'Mestre Kame',
+  Launch: 'Lunch',
+  'Mr. Satan': 'Sr. Satan',
+  'Grand Priest': 'Grande Sacerdote',
+  'Kaio del norte (Kaito)': 'Senhor Kaiô do Norte',
+  'Kaio del Sur': 'Kaiô do Sul',
+  'Kaio del este': 'Kaiô do Leste',
+  'Kaio del Oeste': 'Kaiô do Oeste',
+  'Gran Kaio': 'Grande Kaiô',
+  'Kaio-shin del Este': 'Kaioshin do Leste',
+  'Kaio-shin del Norte': 'Kaioshin do Norte',
+  'Kaio-shin del Sur': 'Kaioshin do Sul',
+  'Kaio-shin del Oeste': 'Kaioshin do Oeste',
   'Gran Kaio-shin': 'Grande Kaioshin',
 };
 
@@ -87,26 +112,102 @@ export const characterDescriptions: Record<number, string> = {
 };
 
 export const planets: Record<string, { name: string; description: string }> = {
-  Namek: { name: 'Namekusei', description: 'Planeta natal dos namekuseijins, palco de grandes batalhas e lar das Esferas do Dragão de Namekusei.' },
-  Tierra: { name: 'Terra', description: 'A Terra é o principal cenário de Dragon Ball e o lar dos humanos e dos Guerreiros Z. Fica no Sistema Solar, na Via Láctea, na região norte do Universo 7, supervisionada pelo Senhor Kaiô do Norte. Ao longo da história, é atacada diversas vezes por inimigos poderosos.' },
-  Vegeta: { name: 'Vegeta', description: 'Antigo planeta natal dos saiyajins, antes chamado de planeta Plant. Localizava-se na região norte do Universo 7 e foi destruído por Freeza.' },
-  'Freezer No. 79': { name: 'Freeza nº 79', description: 'Planeta usado por Freeza como base de operações e centro de clonagem.' },
-  Kanassa: { name: 'Kanassa', description: 'Planeta habitado pelos kanassans, conhecido pela batalha entre Bardock e seus habitantes.' },
-  Monmar: { name: 'Monmar', description: 'Planeta relacionado à busca de Gohan e Kuririn pelas Esferas do Dragão para ressuscitar seus amigos durante a saga de Namekusei.' },
-  Yardrat: { name: 'Yardrat', description: 'Planeta onde Goku aprende a técnica de teletransporte durante sua estadia.' },
-  'Kaiō del Norte': { name: 'Kaiô do Norte', description: 'Planeta localizado no fim do Caminho da Serpente. É o lar do Senhor Kaiô do Norte, de Bubbles e de Gregory, que participam de seus treinamentos.' },
-  Makyo: { name: 'Makyo', description: 'Planeta que serve como fonte de poder para Garlic Jr. e seus aliados. Aparece na saga de Garlic Jr. de Dragon Ball Z.' },
-  Babari: { name: 'Babari', description: 'Planeta rochoso do Universo 10, habitado pelos babarianos. Aparece em Dragon Ball Super e é associado ao refúgio de Tarble, irmão de Vegeta.' },
-  'Tsufur (Universo 6)': { name: 'Tsufur (Universo 6)', description: 'Planeta natal dos tsufurujins, povo ao qual pertencia o Dr. Raichi.' },
-  Desconocido: { name: 'Desconhecido', description: 'Não há informações disponíveis sobre este planeta.' },
-  'Otro Mundo': { name: 'Outro Mundo', description: 'O Outro Mundo é a dimensão para onde vão os personagens depois da morte. Também abriga divindades superiores do universo e se distingue do mundo dos vivos.' },
-  'Planeta de Bills': { name: 'Planeta de Bills', description: 'Planeta situado no mundo dos vivos do Universo 7, apresentado no filme Dragon Ball Z: A Batalha dos Deuses.' },
-  'Planeta del Gran Kaio': { name: 'Planeta do Grande Kaiô', description: 'Local onde acontece o Torneio de Artes Marciais do Outro Mundo, realizado em homenagem ao Senhor Kaiô do Norte e disputado por guerreiros poderosos.' },
-  'Nucleo del Mundo': { name: 'Núcleo do Mundo', description: 'Planeta de origem da espécie dos Kaiôs e Kaioshins. Dele surgem tanto divindades benevolentes quanto suas contrapartes demoníacas.' },
-  'Planeta sagrado': { name: 'Planeta Sagrado', description: 'Planeta localizado no Reino dos Kaioshins, onde vivem os Kaioshins do Universo 7. Esse reino é separado do Outro Mundo, do mundo dos vivos e do Reino Demoníaco.' },
-  'Nuevo Planeta Tsufrui': { name: 'Novo Planeta Tsufuru', description: 'Também chamado de Novo Planeta Plant, é o novo lar dos tsufurujins controlados por Baby Vegeta. Surge após um desejo às Esferas do Dragão de Estrelas Negras para restaurar o planeta Plant na órbita da Terra.' },
-  'Templo móvil del Rey de Todo': { name: 'Templo Móvel do Rei de Tudo', description: 'Templo móvel que abriga os tronos dos dois Zenos no local onde acontece o Torneio do Poder de Dragon Ball Super.' },
-  'Universo 11': { name: 'Universo 11', description: 'Um dos doze universos de Dragon Ball. É o universo gêmeo do Universo 2 e o local de origem da Tropa do Orgulho.' },
+  Namek: {
+    name: 'Namekusei',
+    description:
+      'Planeta natal dos namekuseijins, palco de grandes batalhas e lar das Esferas do Dragão de Namekusei.',
+  },
+  Tierra: {
+    name: 'Terra',
+    description:
+      'A Terra é o principal cenário de Dragon Ball e o lar dos humanos e dos Guerreiros Z. Fica no Sistema Solar, na Via Láctea, na região norte do Universo 7, supervisionada pelo Senhor Kaiô do Norte. Ao longo da história, é atacada diversas vezes por inimigos poderosos.',
+  },
+  Vegeta: {
+    name: 'Vegeta',
+    description:
+      'Antigo planeta natal dos saiyajins, antes chamado de planeta Plant. Localizava-se na região norte do Universo 7 e foi destruído por Freeza.',
+  },
+  'Freezer No. 79': {
+    name: 'Freeza nº 79',
+    description: 'Planeta usado por Freeza como base de operações e centro de clonagem.',
+  },
+  Kanassa: {
+    name: 'Kanassa',
+    description:
+      'Planeta habitado pelos kanassans, conhecido pela batalha entre Bardock e seus habitantes.',
+  },
+  Monmar: {
+    name: 'Monmar',
+    description:
+      'Planeta relacionado à busca de Gohan e Kuririn pelas Esferas do Dragão para ressuscitar seus amigos durante a saga de Namekusei.',
+  },
+  Yardrat: {
+    name: 'Yardrat',
+    description: 'Planeta onde Goku aprende a técnica de teletransporte durante sua estadia.',
+  },
+  'Kaiō del Norte': {
+    name: 'Kaiô do Norte',
+    description:
+      'Planeta localizado no fim do Caminho da Serpente. É o lar do Senhor Kaiô do Norte, de Bubbles e de Gregory, que participam de seus treinamentos.',
+  },
+  Makyo: {
+    name: 'Makyo',
+    description:
+      'Planeta que serve como fonte de poder para Garlic Jr. e seus aliados. Aparece na saga de Garlic Jr. de Dragon Ball Z.',
+  },
+  Babari: {
+    name: 'Babari',
+    description:
+      'Planeta rochoso do Universo 10, habitado pelos babarianos. Aparece em Dragon Ball Super e é associado ao refúgio de Tarble, irmão de Vegeta.',
+  },
+  'Tsufur (Universo 6)': {
+    name: 'Tsufur (Universo 6)',
+    description: 'Planeta natal dos tsufurujins, povo ao qual pertencia o Dr. Raichi.',
+  },
+  Desconocido: {
+    name: 'Desconhecido',
+    description: 'Não há informações disponíveis sobre este planeta.',
+  },
+  'Otro Mundo': {
+    name: 'Outro Mundo',
+    description:
+      'O Outro Mundo é a dimensão para onde vão os personagens depois da morte. Também abriga divindades superiores do universo e se distingue do mundo dos vivos.',
+  },
+  'Planeta de Bills': {
+    name: 'Planeta de Bills',
+    description:
+      'Planeta situado no mundo dos vivos do Universo 7, apresentado no filme Dragon Ball Z: A Batalha dos Deuses.',
+  },
+  'Planeta del Gran Kaio': {
+    name: 'Planeta do Grande Kaiô',
+    description:
+      'Local onde acontece o Torneio de Artes Marciais do Outro Mundo, realizado em homenagem ao Senhor Kaiô do Norte e disputado por guerreiros poderosos.',
+  },
+  'Nucleo del Mundo': {
+    name: 'Núcleo do Mundo',
+    description:
+      'Planeta de origem da espécie dos Kaiôs e Kaioshins. Dele surgem tanto divindades benevolentes quanto suas contrapartes demoníacas.',
+  },
+  'Planeta sagrado': {
+    name: 'Planeta Sagrado',
+    description:
+      'Planeta localizado no Reino dos Kaioshins, onde vivem os Kaioshins do Universo 7. Esse reino é separado do Outro Mundo, do mundo dos vivos e do Reino Demoníaco.',
+  },
+  'Nuevo Planeta Tsufrui': {
+    name: 'Novo Planeta Tsufuru',
+    description:
+      'Também chamado de Novo Planeta Plant, é o novo lar dos tsufurujins controlados por Baby Vegeta. Surge após um desejo às Esferas do Dragão de Estrelas Negras para restaurar o planeta Plant na órbita da Terra.',
+  },
+  'Templo móvil del Rey de Todo': {
+    name: 'Templo Móvel do Rei de Tudo',
+    description:
+      'Templo móvel que abriga os tronos dos dois Zenos no local onde acontece o Torneio do Poder de Dragon Ball Super.',
+  },
+  'Universo 11': {
+    name: 'Universo 11',
+    description:
+      'Um dos doze universos de Dragon Ball. É o universo gêmeo do Universo 2 e o local de origem da Tropa do Orgulho.',
+  },
 };
 
 export function characterName(name: string): string {
@@ -115,19 +216,31 @@ export function characterName(name: string): string {
 }
 export function apiSearchName(query: string): string {
   const trimmed = query.trim();
-  const original = Object.entries(names).find(([, translated]) => translated.toLocaleLowerCase('pt-BR') === trimmed.toLocaleLowerCase('pt-BR'));
+  const original = Object.entries(names).find(
+    ([, translated]) =>
+      translated.toLocaleLowerCase('pt-BR') === trimmed.toLocaleLowerCase('pt-BR'),
+  );
   return original?.[0] ?? trimmed.replace(/\bAndroide\b/gi, 'Android');
 }
-export const raceLabel = (value = '') => races[value.trim()] ?? (Object.values(races).includes(value) ? value : 'Não informada');
-export const affiliationLabel = (value = '') => affiliations[value.trim()] ?? (Object.values(affiliations).includes(value) ? value : 'Não informada');
+export const raceLabel = (value = '') =>
+  races[value.trim()] ?? (Object.values(races).includes(value) ? value : 'Não informada');
+export const affiliationLabel = (value = '') =>
+  affiliations[value.trim()] ??
+  (Object.values(affiliations).includes(value) ? value : 'Não informada');
 export function powerLabel(value = ''): string {
   const trimmed = value.trim();
   if (!trimmed || /^(unknown|desconocido)$/i.test(trimmed)) return 'Não informado';
   const units: Record<string, [string, string]> = {
-    million: ['milhão', 'milhões'], billion: ['bilhão', 'bilhões'], trillion: ['trilhão', 'trilhões'],
-    quadrillion: ['quadrilhão', 'quadrilhões'], quintillion: ['quintilhão', 'quintilhões'],
-    sextillion: ['sextilhão', 'sextilhões'], septillion: ['septilhão', 'septilhões'],
-    septllion: ['septilhão', 'septilhões'], octillion: ['octilhão', 'octilhões'], googolplex: ['googolplex', 'googolplex'],
+    million: ['milhão', 'milhões'],
+    billion: ['bilhão', 'bilhões'],
+    trillion: ['trilhão', 'trilhões'],
+    quadrillion: ['quadrilhão', 'quadrilhões'],
+    quintillion: ['quintilhão', 'quintilhões'],
+    sextillion: ['sextilhão', 'sextilhões'],
+    septillion: ['septilhão', 'septilhões'],
+    septllion: ['septilhão', 'septilhões'],
+    octillion: ['octilhão', 'octilhões'],
+    googolplex: ['googolplex', 'googolplex'],
   };
   const match = trimmed.match(/^([\d.]+)\s+([a-z]+)$/i);
   if (match && units[match[2].toLowerCase()]) {
@@ -136,33 +249,78 @@ export function powerLabel(value = ''): string {
   }
   if (/^[\d.,]+$/.test(trimmed)) return trimmed.replace(/,/g, '.');
   // Já localizado: permite reabrir itens persistidos sem traduzir duas vezes.
-  if (/^[\d.,]+ (milhão|milhões|bilhão|bilhões|trilhão|trilhões|quadrilhão|quadrilhões|quintilhão|quintilhões|sextilhão|sextilhões|septilhão|septilhões|octilhão|octilhões|googolplex)$/.test(trimmed)) return trimmed;
+  if (
+    /^[\d.,]+ (milhão|milhões|bilhão|bilhões|trilhão|trilhões|quadrilhão|quadrilhões|quintilhão|quintilhões|sextilhão|sextilhões|septilhão|septilhões|octilhão|octilhões|googolplex)$/.test(
+      trimmed,
+    )
+  )
+    return trimmed;
   return 'Não informado';
 }
 export function transformationName(name: string): string {
   return characterName(name)
     .replace(/Freezer/g, 'Freeza')
-    .replace(/SSJB Evolved/g, 'Super Saiyajin Azul Evoluído').replace(/SSJB/g, 'Super Saiyajin Azul')
+    .replace(/SSJB Evolved/g, 'Super Saiyajin Azul Evoluído')
+    .replace(/SSJB/g, 'Super Saiyajin Azul')
     .replace(/SSJ(\d*)/g, (_match, level: string) => `Super Saiyajin${level ? ` ${level}` : ''}`)
-    .replace(/Ultra Instinc(?:t)?/g, 'Instinto Superior').replace(/Mega Instinc Evil/g, 'Instinto Maligno')
-    .replace(/Super Namekian/g, 'Super Namekuseijin').replace(/Orange/g, 'Laranja')
-    .replace(/2nd Form/g, 'Segunda Forma').replace(/3rd Form/g, 'Terceira Forma')
-    .replace(/Super Perfect Form/g, 'Forma Superperfeita').replace(/Semi Perfect Form/g, 'Forma Semiperfeita')
-    .replace(/Imperfect Form/g, 'Forma Imperfeita').replace(/Perfect Form/g, 'Forma Perfeita')
-    .replace(/Golden/g, 'Dourada').replace(/Monster/g, 'Monstro').replace(/Ultimate/g, 'Supremo')
-    .replace(/Beast/g, 'Fera').replace(/Rage/g, 'Fúria').replace(/Pure/g, 'Puro').replace(/Legendary/g, 'Lendário');
+    .replace(/Ultra Instinc(?:t)?/g, 'Instinto Superior')
+    .replace(/Mega Instinc Evil/g, 'Instinto Maligno')
+    .replace(/Super Namekian/g, 'Super Namekuseijin')
+    .replace(/Orange/g, 'Laranja')
+    .replace(/2nd Form/g, 'Segunda Forma')
+    .replace(/3rd Form/g, 'Terceira Forma')
+    .replace(/Super Perfect Form/g, 'Forma Superperfeita')
+    .replace(/Semi Perfect Form/g, 'Forma Semiperfeita')
+    .replace(/Imperfect Form/g, 'Forma Imperfeita')
+    .replace(/Perfect Form/g, 'Forma Perfeita')
+    .replace(/Golden/g, 'Dourada')
+    .replace(/Monster/g, 'Monstro')
+    .replace(/Ultimate/g, 'Supremo')
+    .replace(/Beast/g, 'Fera')
+    .replace(/Rage/g, 'Fúria')
+    .replace(/Pure/g, 'Puro')
+    .replace(/Legendary/g, 'Lendário');
 }
 export function localizeCharacter(character: Character): Character {
   const planet = character.originPlanet;
-  const translatedPlanet = planet ? planets[planet.name.trim()] ?? Object.values(planets).find(p => p.name === planet.name.trim()) : undefined;
-  const genders: Record<string, string> = { Male: 'Masculino', Female: 'Feminino', Other: 'Outro', Unknown: 'Não informado' };
+  const translatedPlanet = planet
+    ? (planets[planet.name.trim()] ??
+      Object.values(planets).find((p) => p.name === planet.name.trim()))
+    : undefined;
+  const genders: Record<string, string> = {
+    Male: 'Masculino',
+    Female: 'Feminino',
+    Other: 'Outro',
+    Unknown: 'Não informado',
+  };
   return {
-    ...character, name: characterName(character.name), race: raceLabel(character.race),
+    ...character,
+    name: characterName(character.name),
+    race: raceLabel(character.race),
     affiliation: affiliationLabel(character.affiliation),
-    gender: genders[character.gender ?? ''] ?? (['Masculino', 'Feminino', 'Outro'].includes(character.gender ?? '') ? character.gender : 'Não informado'),
-    ki: powerLabel(character.ki), maxKi: powerLabel(character.maxKi),
-    description: characterDescriptions[character.id] ?? 'A descrição deste personagem ainda não está disponível em português.',
-    originPlanet: planet ? { ...planet, name: translatedPlanet?.name ?? 'Origem desconhecida', description: translatedPlanet?.description ?? 'A descrição deste planeta ainda não está disponível em português.' } : undefined,
-    transformations: character.transformations?.map(form => ({ ...form, name: transformationName(form.name), ki: powerLabel(form.ki) })),
+    gender:
+      genders[character.gender ?? ''] ??
+      (['Masculino', 'Feminino', 'Outro'].includes(character.gender ?? '')
+        ? character.gender
+        : 'Não informado'),
+    ki: powerLabel(character.ki),
+    maxKi: powerLabel(character.maxKi),
+    description:
+      characterDescriptions[character.id] ??
+      'A descrição deste personagem ainda não está disponível em português.',
+    originPlanet: planet
+      ? {
+          ...planet,
+          name: translatedPlanet?.name ?? 'Origem desconhecida',
+          description:
+            translatedPlanet?.description ??
+            'A descrição deste planeta ainda não está disponível em português.',
+        }
+      : undefined,
+    transformations: character.transformations?.map((form) => ({
+      ...form,
+      name: transformationName(form.name),
+      ki: powerLabel(form.ki),
+    })),
   };
 }

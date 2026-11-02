@@ -1,0 +1,16 @@
+node_modules/
+.expo/
+.git/
+.idea/
+.claude/
+dist/
+dist-local/
+dist-android/
+output/
+tmp/
+test-results/
+playwright-report/
+tests/fixtures/
+package-lock.json
+.env
+.env.*

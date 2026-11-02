@@ -19,7 +19,11 @@ export interface CollectionEntry {
   updatedAt: string;
 }
 export type Collection = Record<string, CollectionEntry>;
-export interface AppUser { id: string; email: string; remote: boolean }
+export interface AppUser {
+  id: string;
+  email: string;
+  remote: boolean;
+}
 export type RootStackParams = {
   Login: undefined;
   Catalog: undefined;

@@ -27,6 +27,7 @@
     "@types/react": "~19.2.4",
     "eslint": "^9.39.5",
     "eslint-config-expo": "~57.0.2",
+    "prettier": "^3.9.10",
     "typescript": "~6.0.3",
     "vitest": "^5.0.5"
   },
@@ -40,6 +41,8 @@
     "web": "expo start --web",
     "typecheck": "tsc --noEmit",
     "lint": "expo lint",
+    "format": "prettier --write \"src/**/*.{ts,tsx}\" \"tests/**/*.{ts,tsx}\" \"scripts/*.mjs\" \"*.{ts,tsx,js,json}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx}\" \"tests/**/*.{ts,tsx}\" \"scripts/*.mjs\" \"*.{ts,tsx,js,json}\"",
     "test": "vitest run",
     "check": "npm run typecheck && npm test",
     "export:web": "expo export --platform web"
