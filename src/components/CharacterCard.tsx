@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ActivityIndicator, Pressable, StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, Platform, Pressable, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useCollection } from '../contexts/CollectionContext';
@@ -8,6 +8,9 @@ import { colors, font, styles } from '../theme';
 import { CharacterImage } from './ui';
 import { localizeCharacter } from '../locales/pt-BR';
 export function CharacterCard({ character }: { character: Character }) {
+  const { fontScale } = useWindowDimensions();
+  const favoriteSize = Math.max(44, Math.ceil(23 * fontScale) + 16);
+  const [focused, setFocused] = useState(false);
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParams>>();
   const { entries, update } = useCollection();
   const entry = entries[character.id];
@@ -19,14 +22,14 @@ export function CharacterCard({ character }: { character: Character }) {
     catch { setError('Não foi possível salvar. Toque novamente para tentar.'); }
     finally { setBusy(false); }
   }
-  return <View style={card.container}>
-    <Pressable onPress={() => navigation.navigate('Details', { id: character.id })} accessibilityRole="button" accessibilityLabel={`${display.name}, ${display.race}${entry?.consumed ? ', conhecido' : ''}. Abrir detalhes.`} style={({ pressed }) => [{ gap: 8, opacity: pressed ? 0.7 : 1 }]}>
+  return <View style={[card.container, focused && { borderColor: colors.cyan }]}>
+    <Pressable accessible onFocus={() => setFocused(true)} onBlur={() => setFocused(false)} onPress={() => navigation.navigate('Details', { id: character.id })} accessibilityRole="button" accessibilityLabel={`${display.name}, ${display.race}${entry?.favorite ? ', favorito' : ''}${entry?.consumed ? `, conhecido${entry.rating ? `, nota ${entry.rating} de 5` : ', sem avaliação'}` : ''}. Abrir detalhes.`} style={({ pressed }) => [{ gap: 8, opacity: pressed ? 0.7 : 1 }]}>
       <CharacterImage uri={character.image} name={display.name} />
       <View style={{ padding: 14, paddingTop: 4, gap: 7 }}><Text style={card.race}>{display.race}</Text><Text style={card.name}>{display.name}</Text>
       {entry?.consumed && <Text style={card.badge}>Conhecido {entry.rating ? `• ${entry.rating}/5 ★` : ''}</Text>}
       <Text style={{ fontFamily: font, fontSize: 12, color: colors.muted }}>{display.affiliation}  ↗</Text></View>
     </Pressable>
-    <Pressable onPress={favorite} disabled={busy} accessibilityRole="button" accessibilityLabel={entry?.favorite ? '♥ Favorito' : '♡ Favoritar'} accessibilityState={{ selected: !!entry?.favorite, busy }} style={[card.favorite, entry?.favorite && { borderColor: colors.orange }]}>
+    <Pressable accessible onFocus={() => setFocused(true)} onBlur={() => setFocused(false)} onPress={favorite} disabled={busy} accessibilityRole="button" accessibilityLabel={entry?.favorite ? '♥ Favorito' : '♡ Favoritar'} accessibilityHint={`Alterna a marcação de favorito de ${display.name}.`} accessibilityState={{ selected: Platform.OS === 'web' ? undefined : !!entry?.favorite, busy, disabled: busy }} {...(Platform.OS === 'web' ? { 'aria-pressed': !!entry?.favorite } : {})} style={[card.favorite, { width: favoriteSize, height: favoriteSize, borderRadius: favoriteSize / 2 }, entry?.favorite && { borderColor: colors.orange }]}>
       {busy ? <ActivityIndicator size="small" color={colors.orange} /> : <Text style={{ color: entry?.favorite ? colors.orange : colors.ink, fontSize: 23 }}>{entry?.favorite ? '♥' : '♡'}</Text>}
     </Pressable>
     {!!error && <Text style={styles.error} accessibilityRole="alert">{error}</Text>}

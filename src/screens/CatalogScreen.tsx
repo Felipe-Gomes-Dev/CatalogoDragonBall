@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ActivityIndicator, Pressable, Text, View } from 'react-native';
+import { ActivityIndicator, Pressable, Text, View, useWindowDimensions } from 'react-native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { useAuth } from '../contexts/AuthContext';
 import { useCollection } from '../contexts/CollectionContext';
@@ -10,6 +10,8 @@ import { colors, font, styles } from '../theme';
 import { Brand, WarriorHero } from '../components/Brand';
 import type { RootStackParams } from '../types';
 export function CatalogScreen({ navigation }: NativeStackScreenProps<RootStackParams, 'Catalog'>) {
+  const { width, fontScale } = useWindowDimensions();
+  const stackShortcuts = width < 350 || fontScale > 1.3;
   const { signOut } = useAuth();
   const { entries, warning, sync, syncing } = useCollection();
   const catalog = useCharacters();
@@ -19,8 +21,8 @@ export function CatalogScreen({ navigation }: NativeStackScreenProps<RootStackPa
     <View style={[styles.row, { justifyContent: 'space-between', marginBottom: 8 }]}><Brand /><Pressable accessibilityRole="button" accessibilityLabel="Sair" disabled={leaving} onPress={async () => { setLeaving(true); try { await signOut(); } catch { setError('Não foi possível sair. Tente novamente.'); setLeaving(false); } }} style={{ padding: 12, minWidth: 44, minHeight: 44 }}><Text style={[styles.label, { color: colors.muted }]}>{leaving ? 'Saindo…' : 'Sair ↗'}</Text></Pressable></View>
     <WarriorHero />
     <Pressable onPress={() => navigation.navigate('Search')} accessibilityRole="button" accessibilityLabel="Buscar personagens" style={{ backgroundColor: colors.paper, borderWidth: 1, borderColor: colors.line, borderRadius: 14, padding: 18, flexDirection: 'row', alignItems: 'center', gap: 14 }}><Text style={{ fontSize: 25, color: colors.orange }}>⌕</Text><Text style={[styles.subtitle, { flex: 1 }]}>Qual personagem você procura?</Text><Text style={{ color: colors.muted, fontSize: 20 }}>↗</Text></Pressable>
-    <View style={{ flexDirection: 'row', gap: 12 }}>
-      {[{ title: 'Favoritos', count: favorites, icon: '♥', route: 'Favorites' as const }, { title: 'Conhecidos', count: consumed, icon: '★', route: 'Consumed' as const }].map(item => <Pressable key={item.route} accessibilityRole="button" accessibilityLabel={`${item.icon} ${item.title} (${item.count})`} onPress={() => navigation.navigate(item.route)} style={{ flex: 1, padding: 16, borderRadius: 14, borderWidth: 1, borderColor: colors.line, backgroundColor: colors.paper, gap: 10 }}>
+    <View style={{ flexDirection: stackShortcuts ? 'column' : 'row', gap: 12 }}>
+      {[{ title: 'Favoritos', count: favorites, icon: '♥', route: 'Favorites' as const }, { title: 'Conhecidos', count: consumed, icon: '★', route: 'Consumed' as const }].map(item => <Pressable key={item.route} accessible accessibilityRole="button" accessibilityLabel={`${item.icon} ${item.title} (${item.count})`} onPress={() => navigation.navigate(item.route)} style={{ flex: stackShortcuts ? undefined : 1, minHeight: 48, padding: 16, borderRadius: 14, borderWidth: 1, borderColor: colors.line, backgroundColor: colors.paper, gap: 10 }}>
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}><Text style={{ color: colors.orange, fontSize: 20 }}>{item.icon}</Text><Text style={{ fontFamily: font, color: colors.ink, fontSize: 24, fontWeight: '800' }}>{item.count}</Text></View><Text style={styles.label}>{item.title}</Text>
       </Pressable>)}
     </View>

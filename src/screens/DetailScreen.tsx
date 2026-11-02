@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ScrollView, Text, View } from 'react-native';
+import { ScrollView, Text, View, useWindowDimensions } from 'react-native';
 import axios from 'axios';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { cleanText, errorMessage, getCharacter } from '../services/api';
@@ -9,6 +9,7 @@ import type { Character, RootStackParams } from '../types';
 import { colors, styles } from '../theme';
 import { localizeCharacter } from '../locales/pt-BR';
 export function DetailScreen({ route, navigation }: NativeStackScreenProps<RootStackParams, 'Details'>) {
+  const { fontScale } = useWindowDimensions();
   const [character, setCharacter] = useState<Character | null>(null);
   const [loading, setLoading] = useState(true), [error, setError] = useState(''), [saveError, setSaveError] = useState('');
   const [busy, setBusy] = useState(false), [attempt, setAttempt] = useState(0);
@@ -31,10 +32,10 @@ export function DetailScreen({ route, navigation }: NativeStackScreenProps<RootS
     <View style={styles.row}><Text style={[styles.label, { color: colors.cyan, backgroundColor: colors.pale, borderRadius: 20, paddingHorizontal: 14, paddingVertical: 8 }]}>{character.race}</Text><Text style={styles.subtitle}>{character.affiliation}</Text></View>
     <View style={styles.panel}><Button title={entry?.favorite ? '♥ Remover dos favoritos' : '♡ Adicionar aos favoritos'} selected={!!entry?.favorite} busy={busy} onPress={() => save({ favorite: !entry?.favorite })} />
       <Button secondary title={entry?.consumed ? '✓ Conhecido — desmarcar' : 'Marcar como conhecido'} selected={!!entry?.consumed} disabled={busy} onPress={() => save({ consumed: !entry?.consumed })} />
-      {!!entry?.consumed && <><Text style={styles.label}>Sua nota: {entry.rating ? `${entry.rating} de 5` : 'ainda sem avaliação'}</Text><View pointerEvents={busy ? 'none' : 'auto'}><Stars value={entry.rating} onChange={rating => save({ rating })} /></View></>}
+      {!!entry?.consumed && <><Text style={styles.label} accessibilityLiveRegion="polite">Sua nota: {entry.rating ? `${entry.rating} de 5` : 'ainda sem avaliação'}</Text><Stars value={entry.rating} disabled={busy} onChange={rating => save({ rating })} /></>}
       {!!saveError && <Text style={styles.error} accessibilityRole="alert">{saveError}</Text>}
     </View>
-    <View style={styles.panel}><Text style={styles.section} accessibilityRole="header">Poder e origem</Text><View style={[styles.row, { alignItems: 'flex-start', gap: 24 }]}><View style={{ flex: 1, minWidth: 110, gap: 6 }}><Text style={styles.subtitle}>Ki</Text><Text style={[styles.section, { color: colors.gold }]}>{character.ki || 'Não informado'}</Text></View><View style={{ flex: 1, minWidth: 110, gap: 6 }}><Text style={styles.subtitle}>Ki máximo</Text><Text style={[styles.section, { color: colors.gold }]}>{character.maxKi || 'Não informado'}</Text></View></View><Text style={styles.subtitle}>Gênero: {character.gender || 'Não informado'}</Text></View>
+    <View style={styles.panel}><Text style={styles.section} accessibilityRole="header">Poder e origem</Text><View style={[styles.row, { flexDirection: fontScale > 1.3 ? 'column' : 'row', alignItems: 'flex-start', gap: 24 }]}><View style={{ flex: fontScale > 1.3 ? undefined : 1, minWidth: 110, gap: 6 }}><Text style={styles.subtitle}>Ki</Text><Text style={[styles.section, { color: colors.gold }]}>{character.ki || 'Não informado'}</Text></View><View style={{ flex: fontScale > 1.3 ? undefined : 1, minWidth: 110, gap: 6 }}><Text style={styles.subtitle}>Ki máximo</Text><Text style={[styles.section, { color: colors.gold }]}>{character.maxKi || 'Não informado'}</Text></View></View><Text style={styles.subtitle}>Gênero: {character.gender || 'Não informado'}</Text></View>
     <Text style={styles.section} accessibilityRole="header">História</Text><Text style={styles.text}>{cleanText(character.description) || 'Descrição indisponível.'}</Text>
     {character.originPlanet && <View style={styles.panel}><Text style={styles.section} accessibilityRole="header">Planeta {character.originPlanet.name}</Text><CharacterImage uri={character.originPlanet.image} name={character.originPlanet.name} /><Text style={styles.text}>{cleanText(character.originPlanet.description)}</Text><Text style={styles.subtitle}>{character.originPlanet.isDestroyed ? 'Planeta destruído' : 'Planeta preservado'}</Text></View>}
     {!!character.transformations?.length && <><Text style={styles.section} accessibilityRole="header">Transformações</Text>{character.transformations.map(form => <View key={form.id} style={styles.panel}><CharacterImage uri={form.image} name={form.name} /><Text style={styles.section}>{form.name}</Text><Text style={styles.text}>Ki: {form.ki}</Text></View>)}</>}
