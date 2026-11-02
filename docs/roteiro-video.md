@@ -1,129 +1,127 @@
-# Roteiro do vídeo — Catálogo Z
+﻿# Roteiro do vídeo — Catálogo Z
 
-**Duração alvo: 8 minutos. A apresentação e a demonstração do aplicativo serão conduzidas por você.** Os demais integrantes devem ler principalmente as seções 1, 4 e 5 para preparar suas falas.
+Grupo: Rogério, Alex, Logan e Felipe. Substituir pelos nomes completos na apresentação e na capa do PDF.
 
-Este roteiro segue os itens 7.1–7.3 do [enunciado](ENUNCIADO.txt). Os horários dos quatro blocos abaixo vêm do professor. As falas sugeridas e a distribuição de arquivos são uma proposta de organização do grupo.
+Este roteiro parte dos dois vídeos já gravados por Rogério e preserva integralmente suas falas. Após a breve apresentação coletiva, cada integrante tem uma única participação contínua. Rogério fica com seus dois vídeos consecutivos; Felipe explica detalhes, busca e feedback; Alex e Logan dividem entre si os dois blocos restantes. Quem assumir o último bloco encerra com autenticação, acessibilidade e aprofundamento técnico, sem passar a palavra novamente. A divisão abaixo organiza os assuntos; cada integrante deve confirmar que apresentará uma contribuição real sua, como exige o enunciado.
 
-## 1. O que o professor exige de todos
+## 1. Material já gravado — manter na montagem
 
-- O vídeo deve durar **entre 6 e 9 minutos** e estar no YouTube como **Público**.
-- **Todos os integrantes precisam aparecer e falar.** No início, cada um deve dizer seu **nome completo**, igual ao que consta na capa do PDF.
-- **Cada integrante precisa explicar pelo menos uma parte que implementou**, relacionando o código aos requisitos funcionais (RF). Apenas se apresentar ou mostrar uma tela não substitui essa explicação.
-- O grupo deve demonstrar o aplicativo funcionando e dedicar um bloco a uma explicação técnica em profundidade, ligada ao próprio código.
-- Não haverá defesa técnica individual: o vídeo é a evidência de que os conceitos foram compreendidos e aplicados por todos.
+### Rogério — apresentação e demonstração (2min53,7s)
 
-**Atenção para quem fará a apresentação:** conduzir a demonstração não dispensa sua participação na explicação de código. Reserve também um trecho técnico, conforme a divisão da seção 4.
+Arquivo: `2026-11-02 13-42-49.mkv`.
 
-| Horário exigido | Bloco | Responsabilidade neste roteiro |
-|---|---|---|
-| 0:00–0:30 | Apresentação | Todos dizem o nome completo; você introduz o projeto. |
-| 0:30–2:00 | Demonstração | Você mostra o aplicativo funcionando. |
-| 2:00–5:30 | Explicação de código | Cada integrante explica sua parte e cita os RF correspondentes. |
-| 5:30–8:00 | Explicação técnica | O grupo aprofunda o tema escolhido usando exemplos do projeto. |
+Conteúdo identificado por transcrição automática, com tempos aproximados:
 
-Antes de gravar, preencham os nomes dos responsáveis e confirmem quais contribuições reais cada pessoa apresentará. A divisão abaixo considera quatro integrantes; se o grupo for menor, redistribuam os trechos mantendo os blocos exigidos.
+- 0:01–0:09: apresentação pessoal e introdução ao Catálogo Z em React Native.
+- 0:09–0:25: autenticação com Supabase e entrada no catálogo.
+- 0:25–0:38: catálogo e rolagem infinita.
+- 0:38–0:59: busca, filtro de raça e resultado antes de abrir o personagem.
+- 0:59–1:19: detalhes, imagem, atributos, história, planeta e transformações.
+- 1:19–1:35: favorito, conhecido e avaliação de cinco estrelas.
+- 1:35–1:54: listas de favoritos e conhecidos com a nota.
+- 1:54–2:54: fechamento/reabertura, sessão restaurada e favorito preservado.
 
-## 2. Preparação da sua demonstração
+Não pedir que os outros três repitam essa demonstração. A transcrição ajuda a localizar os assuntos, mas não substitui uma conferência visual da montagem. A pronúncia do nome completo de Rogério deve ser conferida no vídeo; não usar a transcrição automática como fonte para preencher a capa.
 
-Faça um ensaio seguindo a sequência da seção 3. Ela precisa caber em **90 segundos**, sem pular a comprovação da persistência.
+### Rogério — explicação de RF01 e RF02 (1min14,3s)
 
-1. Deixe o app aberto na tela de entrada, com uma conta de teste já cadastrada e sem marcações em Goku. Use o mesmo modo de autenticação durante toda a gravação.
-2. Prefira demonstrar no celular ou emulador Android com o app já carregado. Se usarem a versão web, identifiquem-na como versão web e comprovem a persistência fechando e reabrindo a aba; não apresentem isso como teste nativo.
-3. Confirme a conexão com a API. Se forem demonstrar o bônus de nuvem, usem o modo Supabase e verifiquem a sincronização antes de gravar.
-4. Saiba voltar dos detalhes até o catálogo e abrir Favoritos e Conhecidos. Esses deslocamentos também consomem o tempo da demonstração.
-5. Separe a gravação da tela e a imagem de quem fala, de forma que os nomes, botões e resultados fiquem legíveis. Essa é uma sugestão de apresentação; o requisito do professor é que todos apareçam e falem.
+Arquivo: `2026-11-02 14-09-49.mkv`.
 
-O cadastro, a troca de filtros, a simulação de erro e o teste de acessibilidade podem ser mostrados nos trechos técnicos, se houver tempo. Na sua demonstração, priorize os fluxos que o professor listou expressamente.
+Manter a explicação já gravada:
 
-## 3. Sua parte — apresentação e demonstração, passo a passo
+- `CatalogScreen.tsx`: `useCharacters` fornece os dados e eles seguem para a grade por props.
+- `CharacterGrid.tsx`: `FlatList`, colunas adaptadas à tela/fonte, `keyExtractor` pelo ID e `renderItem` criando os cards.
+- `CharacterCard.tsx`: dados por props e navegação para `Details`, passando apenas o ID.
+- Eventos da grade para carregar mais e atualizar.
 
-### 0:00–0:30 — Apresentação do grupo
+RF01 e RF02 ficam sob responsabilidade de Rogério. Os demais podem citar esses fluxos como ligação com suas partes, sem refazer a explicação.
 
-**Todos participam deste início.** Cada integrante aparece e diz:
+## 2. Ordem de montagem e limite de tempo
 
-> “Meu nome é [NOME COMPLETO].”
+Os dois arquivos somam **4min08s**. A proposta abaixo mantém os vídeos completos e termina em aproximadamente **8min50s**, com apenas 10 segundos de margem até o limite de 9 minutos. Transições e títulos também entram nessa conta: usar cortes diretos e ensaiar as novas falas.
 
-Em um grupo de quatro pessoas, reservem aproximadamente 12–16 segundos para os nomes. Você usa o restante para introduzir o projeto:
+1. **0:00–0:15 — Alex, Logan e Felipe:** cada um aparece e diz “Meu nome é [NOME COMPLETO]”.
+2. **0:15–3:09 — Rogério:** inserir o primeiro vídeo completo, que começa com a apresentação dele.
+3. **3:09–4:23 — Rogério:** inserir o segundo vídeo completo, explicando RF01 e RF02.
+4. **4:23–5:02 — Felipe:** RF03, RF08 e exemplo de RF09.
+5. **5:02–5:41 — Alex ou Logan (bloco A):** RF04, RF05, RF06 e conhecidos/notas do RF07.
+6. **5:41–8:50 — Alex ou Logan (bloco B), participação contínua:** autenticação/sessão do RF07 e RF10 até aproximadamente 6:20; em seguida, sem trocar de apresentador, aprofundamento técnico em Context API versus estado local até 8:50.
 
-> “Este é o Catálogo Z, nosso projeto de Desenvolvimento Mobile Híbrido, feito com React Native e Expo. Escolhemos a Dragon Ball API para explorar personagens e montar uma coleção pessoal.”
+A apresentação dos nomes no início é uma exigência do professor. Depois dela, a ordem de fala é simplesmente **Rogério → Felipe → responsável pelo bloco A → responsável pelo bloco B**, sem retornos. Os dois vídeos de Rogério formam um único bloco. O enunciado não exige que todos participem do aprofundamento técnico: O responsável pelo bloco B conduz esse aprofundamento inteiro e terá mais tempo de fala. Alex e Logan devem combinar quem assume cada bloco: uma pessoa fica com A e a outra com B, preservando uma participação contínua por integrante.
 
-Mostre o nome do aplicativo. Não explique arquitetura nesse momento: o próximo bloco é uma demonstração de uso.
+**Diferença em relação ao enunciado:** o professor determina apresentação em 0:00–0:30, demonstração em 0:30–2:00, código em 2:00–5:30 e aprofundamento em 5:30–8:00. Esta montagem respeita a duração total de 6 a 9 minutos, mas não esses horários internos, porque a demonstração já gravada dura quase três minutos. Não é possível preservar os dois clipes completos e encaixá-los exatamente nessas janelas. Para cumprir os horários exatos, seria necessário condensar o material do Rogério, o que não foi adotado neste roteiro.
 
-### 0:30–2:00 — Demonstração conduzida por você
+## 3. Felipe — detalhes, busca e feedback (39 segundos)
 
-As falas abaixo são sugestões curtas. Ensaiem com o carregamento real do aplicativo; uma ação só fica comprovada quando o resultado aparece na tela.
+**Abrir antes de gravar:** `src/screens/DetailScreen.tsx`, `src/screens/SearchScreen.tsx` e `src/components/ui.tsx`. Deixar os trechos selecionados; evitar procurar código durante a fala.
 
-| Tempo | O que você faz na tela | Sugestão de fala | O que precisa ficar visível |
-|---|---|---|---|
-| **0:30–0:40** | Informe os dados da conta e toque em **Entrar**. | “O acesso exige login. Depois de entrar, o aplicativo carrega os personagens da API.” | Tela de entrada e transição para o catálogo. **RF07**. |
-| **0:40–0:52** | Role até o fim da primeira página e aguarde os próximos personagens. | “O catálogo usa rolagem infinita: novas páginas são acrescentadas conforme chegamos ao final da lista.” | Novos itens entrando sem substituir os anteriores. Não basta rolar apenas a primeira página. **RF01**. |
-| **0:52–1:04** | Abra a busca, digite **Goku**, toque em **Buscar** e depois no resultado. | “A busca apresenta uma lista de resultados. Ao escolher Goku, abrimos seus detalhes.” | Resultado da busca antes de abrir o detalhe. **RF08, RF02 e RF03**. |
-| **1:04–1:18** | Mostre imagem e atributos. Toque em **Adicionar aos favoritos**, marque **Conhecido** e selecione **5 estrelas**. | “Nos detalhes vemos a história e os atributos. Podemos favoritar, marcar como conhecido e dar uma nota pessoal.” | Coração/estado de favorito, conhecido selecionado e nota 5. “Conhecido” corresponde ao item consumido do enunciado. **RF03, RF04 e RF07**. |
-| **1:18–1:32** | Volte ao catálogo; abra **Favoritos** e depois **Conhecidos**. | “Os favoritos ficam nesta lista. Os personagens conhecidos aparecem em outra, com a nota que atribuímos.” | Goku nas duas listas e a nota em Conhecidos. **RF05 e RF07**. |
-| **1:32–1:48** | Feche o app, remova-o dos aplicativos recentes e abra novamente. | “Agora vou fechar e reabrir o aplicativo para mostrar que a sessão e a coleção foram preservadas.” | Fechamento e reabertura reais; entrada direta no catálogo, sem novo login. **RF06 e RF07**. |
-| **1:48–2:00** | Mostre os contadores restaurados, abra **Conhecidos** para conferir a nota e volte para **Sair**. | “A coleção e a nota continuam salvas. Ao sair da conta, o aplicativo volta à tela de entrada.” | Marcação/nota restaurada e logout retornando à autenticação. **RF06 e RF07**. |
+**Mostrar:** `getCharacter(route.params.id, controller.signal)`; depois `value`, `onChangeText` e `submit` na busca; por fim `StateView`.
 
-**Frase de passagem para a explicação de código:**
+**Fala sugerida:**
 
-> “Agora vamos mostrar os trechos que implementam essas funções e relacioná-los aos requisitos do trabalho.”
+> “Continuando a navegação mostrada pelo Rogério, no RF03 a DetailScreen recebe o ID e faz outra requisição para carregar os dados completos. O useEffect cancela a requisição ao sair da tela. No RF08, a busca tem um campo controlado: value exibe o texto e onChangeText atualiza o estado. O botão Buscar confirma os parâmetros, e os resultados aparecem em uma lista. Para o RF09, tratamos carregamento, erro e resultado vazio; o StateView apresenta o indicador ou a opção de tentar novamente.”
 
-Se o ensaio ultrapassar 2:00, encurte as falas e os deslocamentos. Mantenha os resultados na tela tempo suficiente para serem reconhecidos, especialmente a próxima página, a lista da busca e a nota após a reabertura.
+Não repetir FlatList, props e navegação já explicados pelo Rogério. Ensaiar para caber em 39 segundos, com leitura legível do código.
 
-## 4. Parte de código — orientação para os demais integrantes
+## 4. Alex ou Logan (bloco A) — coleção e persistência (39 segundos)
 
-**O professor quer que cada pessoa mostre e explique seu trecho de código, ligando-o a um RF.** A demonstração anterior mostrou o resultado; agora é preciso explicar como ele acontece.
+**Abrir antes de gravar:** `src/contexts/CollectionContext.tsx` e `src/screens/CollectionScreen.tsx`.
 
-Cada participante deve preparar uma fala que responda a estas quatro perguntas:
+**Mostrar:** `useCollection`, `update`, `writeJSON`, `setEntries` e o filtro entre `favorite` e `consumed`.
 
-1. Qual funcionalidade este trecho implementa e qual RF atende?
-2. Qual componente, hook, contexto ou serviço é responsável por ela?
-3. Como os dados passam por esse trecho até aparecerem na interface?
-4. Qual decisão ou tratamento importante existe ali, como paginação, erro, persistência ou isolamento por usuário?
+**Fala sugerida:**
 
-Mostrem os trechos relevantes no editor com tamanho de fonte legível. Expliquem os identificadores concretos do projeto; não se limitem a ler nomes de arquivos ou a recitar definições de React.
+> “Nos RF04 e RF05, os favoritos ficam no CollectionContext. O hook useCollection permite que detalhes, cards e listas consultem a mesma coleção. A CollectionScreen filtra os registros para mostrar favoritos ou conhecidos, incluindo as notas do RF07. No RF06, update grava a alteração localmente antes de atualizar a interface com setEntries. Ao abrir o aplicativo, um useEffect recupera os dados do AsyncStorage. A chave inclui o ID do usuário, mantendo as coleções locais separadas por conta.”
 
-### Divisão sugerida para quatro pessoas
+O funcionamento aprofundado do Context fica para o bloco final. Aqui explicar o caminho dos dados e apontar o código.
 
-| Horário | Responsável a preencher | Arquivos e pontos para explicar | RF |
-|---|---|---|---|
-| **2:00–2:50** | Você: [NOME COMPLETO] | `src/components/CharacterGrid.tsx`, `src/components/CharacterCard.tsx` e a ligação com `src/screens/CatalogScreen.tsx`. Mostrar `FlatList`, `numColumns`, `keyExtractor`, card recebendo dados por props e navegação pelo ID. É uma sugestão para sua participação técnica; confirmem a contribuição que você apresentará. | RF01 e RF02 |
-| **2:50–3:40** | Integrante 2: [NOME COMPLETO] | `src/hooks/useCharacters.ts`, `src/services/api.ts` e `src/screens/SearchScreen.tsx`. Explicar Axios, página atual, concatenação dos resultados, campo controlado e consulta ao endpoint de busca. Mostrar cancelamento com `AbortController` e erro da próxima página preservando a lista. | RF01, RF08 e RF09 |
-| **3:40–4:30** | Integrante 3: [NOME COMPLETO] | `src/contexts/CollectionContext.tsx`, `src/services/collection.ts` e `src/services/storage.ts`. Explicar `createContext`/`useCollection`, favorito compartilhado, conhecido e nota; gravação no AsyncStorage e recuperação inicial em `useEffect`. Se tratar do bônus, mostrar sincronização com `dragonball_items` e separação por usuário. | RF04, RF05, RF06 e RF07 |
-| **4:30–5:30** | Integrante 4: [NOME COMPLETO] | `src/contexts/AuthContext.tsx`, `src/services/auth.ts`, `src/navigation/RootNavigator.tsx` e `src/screens/DetailScreen.tsx`. Explicar login local com hash, Supabase Auth, sessão e troca condicional dos stacks; detalhe por ID e `navigation.setOptions`. Mostrar também um exemplo de rótulo/estado acessível em `src/components/ui.tsx`. | RF02, RF03, RF07 e RF10 |
+## 5. Alex ou Logan (bloco B) — início da participação contínua: autenticação e acessibilidade (39 segundos)
 
-Os tempos são de aproximadamente 50 segundos por pessoa, como sugerido pelo professor. O último trecho tem 60 segundos para completar a janela de 3min30s. Se essa divisão não corresponder às contribuições reais, troquem os responsáveis ou os assuntos antes de gravar.
+**Abrir antes de gravar:** `src/navigation/RootNavigator.tsx`, `src/services/auth.ts` e `src/components/ui.tsx`.
 
-**Modelo de fala para cada integrante adaptar:**
+**Mostrar:** condição `user` no navegador; autenticação local/remota no serviço; `accessibilityLabel`, `accessibilityRole` e `accessibilityState` no botão.
 
-> “Eu implementei [CONTRIBUIÇÃO REAL], que atende ao RF[XX]. Neste arquivo, [FUNÇÃO/HOOK/COMPONENTE] recebe [DADO], executa [OPERAÇÃO] e atualiza [ESTADO/TELA]. Esta verificação serve para [DECISÃO OU TRATAMENTO].”
+**Fala sugerida:**
 
-## 5. Explicação técnica — 5:30–8:00
+> “No RF07, o AuthContext centraliza a sessão. O RootNavigator consulta user para renderizar o login ou as telas do aplicativo. Quando a sessão é restaurada, o usuário entra direto; ao sair, o estado muda e o login volta. O serviço suporta Supabase Auth e login local com hash e salt, sem salvar a senha em texto puro. No RF10, os componentes têm rótulos, papéis e estados acessíveis. Botões e estrelas usam áreas de toque adequadas, e o layout considera a escala da fonte.”
 
-**Tema escolhido: Context API versus estado local (`useState`).** É um dos temas sugeridos pelo professor. Persistência e sincronização entram como exemplos do nosso fluxo, mantendo o foco na escolha e no funcionamento do estado.
+A gravação do Rogério usa Supabase. Apresentar o login local como alternativa implementada no código, sem atribuir esse modo à demonstração dele.
 
-Neste bloco, o professor espera uma explicação **em profundidade e relacionada ao próprio código**. Não basta repetir o que cada botão faz. A participação pode ser dividida entre os integrantes; o requisito individual de todos explicarem uma contribuição deve estar cumprido no bloco anterior.
+## 6. Mesmo responsável pelo bloco B — continuação da mesma participação: aprofundamento técnico (2min30s)
 
-| Tempo | Questão a responder | Trecho concreto para mostrar |
-|---|---|---|
-| **5:30–6:05** | O que fica local e o que precisa ser global? | `text` em `SearchScreen.tsx` é estado local de digitação. Sessão em `AuthContext` e marcações em `CollectionContext` precisam ser compartilhadas. |
-| **6:05–6:45** | Como favoritar no detalhe muda o card e a lista de favoritos? | A chamada a `update`, a gravação local, `setEntries` e os consumidores de `useCollection`. São telas diferentes lendo a mesma coleção. |
-| **6:45–7:25** | Como Context se relaciona com persistência e com a primeira renderização? | Context mantém o estado em memória; AsyncStorage preserva os dados entre execuções. Mostrar o `useEffect` de recuperação e o bloqueio de carregamento em `AppStack`, que evita mostrar a coleção vazia antes da leitura local. |
-| **7:25–8:00** | Quando o Context causa renderizações desnecessárias? Como isso se compara ao Flutter? | O Provider passa um valor aos consumidores; quando esse valor muda, eles podem renderizar novamente. No código atual, `update` e o objeto `value` são recriados na renderização. Discutir separar contextos e estabilizar valores/funções como possíveis melhorias, sem afirmar que já foram aplicadas. Comparar com `ChangeNotifier`/Provider do Flutter. |
+Este bloco explica decisões e consequências no código. Não repetir a lista de RF nem refazer a demonstração. O integrante que apresentou a seção 5 continua falando e aparece com o código legível. Não é uma terceira tarefa a distribuir: as seções 5 e 6 pertencem à mesma pessoa. Os subtópicos abaixo são apenas uma sequência de raciocínio, sem troca de integrante. Pode gravar toda a participação de 5:41 a 8:50 de uma vez.
 
-Uma conclusão possível, dentro dos segundos finais:
+### 6:20–7:00 — responsável pelo bloco B: estado local e estado compartilhado
 
-> “Usamos estado local para a digitação e Context para dados compartilhados. A persistência fica nos serviços. Assim, as telas consultam a mesma coleção e conseguimos restaurá-la quando o aplicativo é aberto novamente.”
+**Mostrar:** `text`, `race` e `submitted` em `SearchScreen.tsx`; depois os consumidores de `useCollection` em detalhes e coleção.
 
-Se o grupo escolher outro tema, substitua este bloco inteiro por um tema da lista do professor ou previamente combinado com ele. Atualizem também o tema e o minuto no relatório.
+> “A escolha depende de quem precisa do dado. O texto digitado na busca fica no useState da SearchScreen porque serve àquela tela. Separar text de submitted também evita consultar a API a cada tecla: a consulta usa os parâmetros confirmados no botão Buscar. Já os favoritos precisam aparecer nos detalhes, nos cards e na coleção. Se cada tela guardasse uma cópia independente, seria necessário sincronizá-las. O CollectionContext oferece uma fonte compartilhada, acessada pelo hook useCollection. A sessão segue a mesma lógica no AuthContext, porque determina quais telas podem ser exibidas.”
 
-## 6. Conferência antes de publicar
+### 7:00–7:55 — responsável pelo bloco B: alteração, persistência e recuperação
 
-- [ ] Todos apareceram e disseram seus nomes completos no início.
-- [ ] Cada integrante explicou ao menos uma parte que implementou e citou os RF atendidos.
-- [ ] A demonstração mostrou login, rolagem infinita, busca com resultados, detalhes, favoritos, conhecidos com nota e reabertura com persistência.
-- [ ] A explicação técnica começa por volta de 5:30 e usa o código do projeto.
-- [ ] O vídeo completo tem entre 6 e 9 minutos. O professor prevê desconto de 5% por minuto fora desse intervalo.
-- [ ] O vídeo foi publicado no YouTube como **Público** e o link foi conferido sem depender da conta de quem publicou.
-- [ ] O PDF tem os nomes completos de todos, o link do vídeo, o tema técnico e o minuto real em que ele aparece. O enunciado prevê nota zero para o integrante cujo nome não constar na capa.
+**Mostrar:** `update` e `useEffect` no `CollectionContext.tsx`; bloqueio por `loading` em `AppStack`, no `RootNavigator.tsx`.
 
-**Para citar os bônus:** a integração Supabase já foi testada com duas contas, mas a gravação deve corresponder ao modo que estiver rodando. Se estiverem usando login local, não apresentem essa sessão como Supabase Auth. Relacionem a nuvem à tabela `dragonball_items`, que mantém a coleção Dragon Ball separada da tabela Pokémon do projeto Flutter.
+> “Context compartilha estado em memória, mas sozinho não preserva nada quando o aplicativo fecha. Na atualização da coleção, o código cria o próximo registro, espera writeJSON terminar e só então chama setEntries. Assim, a interface não confirma uma gravação local que falhou. Uma fila serializa as alterações para evitar que duas gravações sobrescrevam uma à outra. Na abertura, o useEffect lê a coleção pela chave do usuário. Enquanto isso, AppStack mostra o carregamento, em vez de apresentar uma coleção vazia. Para contas remotas, a sincronização reconcilia os dados com a nuvem. Se a nuvem falhar, a coleção local é mantida e o aplicativo informa a falha.”
+
+### 7:55–8:50 — responsável pelo bloco B: renderizações e comparação com Flutter
+
+**Mostrar:** objeto `value` do `Context.Provider` e função `update` no `CollectionContext.tsx`.
+
+> “Compartilhar estado também tem um custo. Quando o valor do Provider muda, os componentes que consomem esse contexto podem renderizar novamente. Aqui, o objeto value e a função update são recriados em cada renderização do Provider. Uma melhoria possível seria estabilizar funções com useCallback e o objeto com useMemo, ou separar contextos conforme os dados consumidos. Isso não elimina as renderizações necessárias quando a coleção muda e deve ser avaliado antes de otimizar. No Flutter, Provider com ChangeNotifier permite compartilhar estado e notificar os consumidores; aqui usamos Context e atualizações de estado do React. Nos dois casos, compartilhar o estado e persistir os dados são responsabilidades diferentes.”
+
+As otimizações citadas são propostas, não mudanças já implementadas. Ajustar as pausas durante o ensaio para completar a janela sem ultrapassar o limite total.
+
+## 7. Conferência antes de publicar
+
+- [ ] Manter os dois vídeos de Rogério completos e na ordem indicada.
+- [ ] Os quatro aparecem e dizem seus nomes completos no início; conferir os nomes com a capa do PDF.
+- [ ] Alex e Logan definiram entre si os responsáveis pelos blocos A e B, uma pessoa em cada bloco.
+- [ ] Alex, Logan e Felipe explicam contribuições que realmente implementaram e citam os RF.
+- [ ] Conferir visualmente os fluxos do primeiro vídeo, especialmente reabertura e dados restaurados. A transcrição menciona sessão e favorito; conferir também se a nota restaurada está legível. Se faltar essa evidência, gravar um complemento e recalcular a duração.
+- [ ] As novas gravações mostram o código com fonte legível, sem credenciais ou senhas na tela.
+- [ ] A duração final, incluindo cortes e transições, fica entre 6 e 9 minutos.
+- [ ] Registrar no relatório o início real do aprofundamento técnico; nesta proposta é aproximadamente 6:20.
+- [ ] Estar ciente de que preservar os clipes completos desloca os horários internos exigidos pelo professor.
+- [ ] Publicar o vídeo no YouTube como Público, conferir o link e incluí-lo no PDF.
+
+Não é necessário repetir a demonstração completa. Se um ensaio estourar o tempo, encurtar primeiro as novas falas e transições, preservando os vídeos de Rogério conforme solicitado.
